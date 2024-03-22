@@ -22,6 +22,8 @@ export default async function Home() {
           Go to dynamic page
         </Link>
       </Button>
+
+      <p className="h-32 overflow-scroll">{JSON.stringify(data)}</p>
     </div>
   );
 }
