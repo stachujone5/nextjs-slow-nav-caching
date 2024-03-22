@@ -6,7 +6,7 @@ interface Props {
 }
 
 const demoCall = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
   return "...";
