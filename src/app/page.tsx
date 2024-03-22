@@ -1,7 +1,20 @@
+import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Home() {
+const demoCall = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await fetch("https://jsonplaceholder.typicode.com/todos/1");
+
+  return "...";
+};
+
+export default async function Home() {
+  const data = await demoCall();
+
+  cookies();
+  console.log(data);
+
   return (
     <div className="container bg-background rounded-md p-4 flex items-center gap-2">
       <Button asChild>
