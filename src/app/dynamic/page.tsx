@@ -6,7 +6,10 @@ const demoCall = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const data = await fetch("https://jsonplaceholder.typicode.com/todos/");
 
-  return data.json();
+  return {
+    data: await data.json(),
+    fetched: new Date().toLocaleString(),
+  };
 };
 
 export default async function DynamicPage() {
@@ -24,7 +27,11 @@ export default async function DynamicPage() {
         </Link>
       </Button>
 
-      <p className="h-32 overflow-scroll">{JSON.stringify(data)}</p>
+      <p>
+        <strong>Fetched at:</strong> {data.fetched}
+      </p>
+
+      <p className="h-32 overflow-scroll">{JSON.stringify(data.data)}</p>
     </div>
   );
 }
