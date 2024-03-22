@@ -2,7 +2,9 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface Props {
-  searchParams: any;
+  searchParams: {
+    dynamic: string;
+  };
 }
 
 const demoCall = async () => {
@@ -15,7 +17,7 @@ const demoCall = async () => {
 export default async function DynamicPage({ searchParams }: Props) {
   const data = await demoCall();
 
-  console.log(searchParams, data);
+  console.log(data);
 
   return (
     <div className="container bg-background rounded-md p-4 flex items-center gap-2">
@@ -24,6 +26,7 @@ export default async function DynamicPage({ searchParams }: Props) {
           Go to home page
         </Link>
       </Button>
+      {searchParams.dynamic}
     </div>
   );
 }
